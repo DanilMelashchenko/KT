@@ -1,4 +1,3 @@
-//***1***
 let name = "Іван";
 let city = name;
 console.log(name);
