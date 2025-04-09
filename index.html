@@ -1,14 +1,28 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="en">
 <head>
-   <meta charset="UTF-8">
-   <title>Інформація про студентів</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Кнопки для визначень</title>
+  <script>
+    // Функція для виведення визначення HTML
+    function showHTMLDefinition() {
+      alert("HTML (HyperText Markup Language) — це стандартна мова розмітки для створення веб-сторінок.");
+    }
+
+    // Функція для виведення визначення CSS
+    function showCSSDefinition() {
+      alert("CSS (Cascading Style Sheets) — це мова стилів для опису вигляду HTML-документів.");
+    }
+  </script>
 </head>
 <body>
-   <h1>Перевірка студентів</h1>
-   <button onclick="ShowAllStudents()">Показати студентів</button>
 
-   <div id="output"></div>
-   <script src="Students.js"></script>
+  <!-- Кнопка для HTML -->
+  <button onclick="showHTMLDefinition()">HTML</button>
+
+  <!-- Кнопка для CSS -->
+  <button onclick="showCSSDefinition()">CSS</button>
+
 </body>
-   </html>
+</html>
