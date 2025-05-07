@@ -4,10 +4,75 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+    
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 20px;
+    }
+
+    input {
+      margin-bottom: 10px;
+      width: 200px;
+      padding: 5px;
+    }
+
+    button {
+      padding: 6px 12px;
+      margin-right: 10px;
+    }
+
+    .output {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
 
-  <script src="Colculator.js"></script>
+  <h1>Калькулятор</h1>
 
+  <label>Перше число:</label> <br>
+  <input type="number" id="inputA"> <br>
+
+  <label>Друге число:</label> <br>
+  <input type="number" id="inputB"> <br>
+
+  <button onclick="calculator.read()">Зчитати</button>
+  <button onclick="showSum()">Сума</button>
+  <button onclick="showMul()">Добуток</button>
+
+  <div class="output" id="result"></div>
+
+  <script>
+    function Calculator () {
+      this.a = 0;
+      this.b = 0;
+
+      this.read = function () {
+        this.a = +document.getElementById ("inputA").value;
+        this.b = +document.getElementById ("inputB").value;
+        document.getElementById ("result").textContent = "Данні зчитано!";
+      };
+
+      this.sum = function () {
+        return this.a + this.b;
+      };
+
+      this.mul = function () {
+        return this.a * this.b;
+      };
+    }
+
+    const calculator = new Calculator ();
+
+    function showSum () {
+      document.getElementById ("result").textContent = "Сума: " + calculator.sum();
+    }
+
+    function showMul () {
+      document.getElementById ("result").textContent = "Добуток: " + calculator.mul();
+    }
+  </script>
 </body>
 </html>
