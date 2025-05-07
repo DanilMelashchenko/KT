@@ -1,26 +1,35 @@
 class Abonent {
-    constructor(name, number){
+    constructor (name, number) {
         this.name = name;
         this.number = number;
     }
 
-    setNumber (newNumber) {
-        this.number = newNumber;
-    }
-
     getInfo() {
-        console.log(`Ім'я: ${this.name}, Номер: ${this.number}`);
+        return `Ім'я: ${this.name}, Номер: ${this.number}`;
     }
 }
 
-const user1 = new Abonent ("Олена", "123-456-88");
-const user2 = new Abonent ("Іван", "987-654-22");
-const user3 = new Abonent ("Марія", "555-878-77");
+const phoneBook = [];
 
-user1.getInfo();
-user2.getInfo();
-user3.getInfo();
+document.getElementById ("addBtn").addEventListener ("click", function() {
+    const name = document.getElementById ("nameInput").value;
+    const number = document.getElementById ("numberInput").value;
 
-user1.setNumber ("888-555-33");
+    const newAbonent = new Abonent (name, number);
 
-user1.getInfo ();
+    phoneBook.push (newAbonent);
+
+    updateDisplay();
+});
+
+function updateDisplay () {
+    const listDiv = document.getElementById ("abonentList");
+    listDiv.innerHTML = "";
+
+
+    phoneBook.forEach((abonent, index) => {
+        const p = document.createElement ("p");
+        p.textContent = abonent.getInfo();
+        listDiv.appendChild (p);
+    });
+}
