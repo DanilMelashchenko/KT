@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Мультимедійний сайт</title>
+<link rel="stylesheet" href="css/style3.css" />
+</head>
+<body>
+<header>
+    <nav>
+    <ul class="main-menu">
+        <li><a href="#music">Музика</a></li>
+        <li><a href="#video">Відео</a></li>
+        <li><a href="#maps">Карти</a></li>
+        <li><a href="#weather">Погода</a></li>
+        <li><a href="#social">Соцмережі</a></li>
+    </ul>
+    </nav>
+</header>
+
+<section id="video">
+    <h2>Відео</h2>
+    <div class="video-wrapper">
+    <div class="video-block">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/n-07s0oObI8?si=BLdjRKnCADfDh1rE" title="YouTube video"
+        frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div class="video-block">
+        <iframe src="https://player.vimeo.com/video/464298473?share=copy" width="560" height="315" frameborder="0"
+        allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    </div>
+</section>
+
+<section id="music">
+    <h2>Музика</h2>
+    <audio controls>
+    <source src="audio/Rasen.m4a" type="audio/mpeg" />
+    </audio>
+</section>
+
+<section id="maps">
+    <h2>Карта</h2>
+    <div id="map"></div>
+    <div id="pano"></div>
+</section>
+
+<section id="weather">
+    <div class="weather-block">
+        <h2>Погода</h2>
+    <a class="weatherwidget-io" href="https://forecast7.com/uk/50d4530d52/kiev/" data-label_1="КИЇВ" data-label_2="WEATHER" data-icons="Climacons Animated" data-theme="beige" >КИЇВ WEATHER</a>
+<script>
+!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
+</script>
+</div>
+</section>
+<section id="social">
+    <h2>Соцмережі</h2>
+    <div class="social-weather-wrapper">
+    <a href="https://t.me/danyaaaa2" target="_blank" class="social-button">
+        <img src="icons/telegram.png" alt="Telegram">
+        <div class="social-text">
+        <h3>Telegram</h3>
+        <p>Зв'яжіться зі мною особисто</p>
+        </div>
+    </a>
+
+    <a href="https://instagram.com/danil_klyev" target="_blank" class="social-button">
+        <img src="icons/instagram.png" alt="Instagram">
+        <div class="social-text">
+        <h3>Instagram</h3>
+        <p>Мої фото і частинка з життя</p>
+        </div>
+    </a>
+
+    <a href="https://twitter.com/danil99klyev" target="_blank" class="social-button">
+        <img src="icons/twitter.png" alt="Twitter">
+        <div class="social-text">
+        <h3>Twitter</h3>
+        <p>Дізнайтесь, про що я думаю</p>
+        </div>
+    </a>
+    </div>
+</section>
+
+<script>
+    function initMap() {
+    const lp = { lat: 50.458628526728205, lng: 30.37927413754883 };
+    const map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 17,
+        center: lp,
+        mapTypeId: 'satellite'
+    });
+
+    const marker = new google.maps.Marker({
+        position: lp,
+        map: map,
+        title: "Львівська політехніка"
+    });
+
+    const panorama = new google.maps.StreetViewPanorama(
+        document.getElementById("pano"), {
+        position: lp,
+        pov: {
+        heading: 34,
+        pitch: 10
+        }
+        }
+    );
+    map.setStreetView(panorama);
+    }
+ </script>
+<script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA20fE3tRkzvmyXzrxdXBE8cvHKp-muBMw&callback=initMap"></script>
+</body>
+</html>
