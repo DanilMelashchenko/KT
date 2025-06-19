@@ -34,11 +34,15 @@ nav .navbar-nav .nav-link:hover {
   color: #ffd580;
 }
 
+.block {
+    margin-top: 9rem;
+}
+
 .cont {
     padding-top: 30px;
     padding-bottom: 30px;
     margin-top: 9rem;
-    margin-left: 9rem;
+    margin-left: 8rem;
 }
 
 footer {
