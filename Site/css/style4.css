@@ -1,0 +1,76 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", sans-serif;
+  background-color: #fef8f2;
+  color: #333;
+}
+
+header {
+  background-color: #fbd6b7;
+  padding: 20px;
+  text-align: center;
+}
+
+h1 {
+  margin: 0;
+  color: #4d2c1d;
+}
+
+main {
+  padding: 20px;
+}
+
+.ui-section {
+  background-color: #fff3e5;
+  border: 1px solid #ffd6a5;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.ui-section h2 {
+  margin-top: 0;
+  color: #cc5500;
+}
+
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+#accordion-section,
+#tabs-section {
+  flex: 1 1 40%;
+  min-width: 250px;
+}
+
+#slider-section {
+  text-align: center;
+}
+
+#slider-value {
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-size: 1.2em;
+}
+
+#slider {
+  margin: 0 auto;
+  width: 80%;
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  #slider {
+    width: 100%;
+  }
+}

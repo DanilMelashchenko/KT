@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Динамічні елементи jQuery UI</title>
+
+  <!-- jQuery та jQuery UI -->
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css" />
+  <link rel="stylesheet" href="css/style4.css" />
+</head>
+<body>
+
+  <header>
+    <h1>Демо jQuery UI</h1>
+  </header>
+
+  <main>
+    <div class="wrapper">
+      <!-- Accordion -->
+      <section class="ui-section" id="accordion-section">
+        <h2>Accordion</h2>
+        <div id="accordion">
+          <h3>Розділ 1</h3>
+          <div><p>Вміст першого розділу.</p></div>
+          <h3>Розділ 2</h3>
+          <div><p>Вміст другого розділу.</p></div>
+          <h3>Розділ 3</h3>
+          <div><p>Вміст третього розділу.</p></div>
+        </div>
+      </section>
+
+      <!-- Tabs -->
+      <section class="ui-section" id="tabs-section">
+        <h2>Tabs</h2>
+        <div id="tabs">
+          <ul>
+            <li><a href="#tab-1">Вкладка 1</a></li>
+            <li><a href="#tab-2">Вкладка 2</a></li>
+          </ul>
+          <div id="tab-1"><p>Вміст першої вкладки.</p></div>
+          <div id="tab-2"><p>Вміст другої вкладки.</p></div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Datepicker -->
+    <section class="ui-section">
+      <label for="date">Оберіть дату:</label>
+      <input type="text" id="datepicker" />
+    </section>
+
+    <!-- Tooltip -->
+    <section class="ui-section">
+      <p><a href="#" title="Це підказка!">Наведіть на цей текст</a></p>
+    </section>
+
+    <!-- Slider -->
+    <section class="ui-section" id="slider-section">
+      <div id="slider-value">Значення: <span id="slider-label">50</span></div>
+      <div id="slider"></div>
+    </section>
+  </main>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
