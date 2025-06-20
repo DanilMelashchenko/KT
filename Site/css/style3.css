@@ -1,3 +1,7 @@
+/* =============================== */
+/*         ГЛОБАЛЬНІ СТИЛІ         */
+/* =============================== */
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -8,38 +12,109 @@ body {
   font-family: Arial, sans-serif;
   line-height: 1.5;
   color: #333;
-  background-color: #ffffff;
+  background-color: #e6e4f8;
   overflow-x: hidden;
   padding: 20px;
 }
 
+/* Заголовки */
 h1, h2, h3 {
   margin-bottom: 15px;
   text-align: center;
+  font-weight: 600;
 }
 
-.main-menu {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  list-style: none;
-  gap: 15px;
-  margin-bottom: 30px;
-  padding: 0;
+
+/* =============================== */
+/*         ФІКСОВАНИЙ ХЕДЕР        */
+/* =============================== */
+
+.fixed-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #f2e4f8;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  z-index: 1050;
 }
 
-.main-menu li a {
-  text-decoration: none;
+.fixed-top .navbar {
+  padding: 10px 15px;
+}
+
+/* Назва сайту в навігації */
+.fixed-top .navbar-brand {
+  color: #3c2d44;
+  font-weight: 700;
+  font-size: 1.3rem;
+  text-align: center;
+  flex-grow: 1;
+}
+
+
+/* =============================== */
+/*       КНОПКА ВІДКРИТТЯ MENU     */
+/* =============================== */
+
+.btn.btn-light {
+  background-color: #3c2d44;
+  border: none;
+  font-size: 28px;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 6px 15px;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.btn.btn-light:hover {
+  background-color: #d4c3e0;
+}
+
+
+/* =============================== */
+/*         ВИЇЗНЕ МЕНЮ             */
+/* =============================== */
+
+.custom-canvas {
+  background-color: rgba(59, 42, 63, 0.85) !important;
+  color: #302931;
+  backdrop-filter: blur(10px);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.custom-canvas .offcanvas-header {
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+.custom-canvas .offcanvas-title {
   color: #fff;
-  background-color: #b88aca;
-  padding: 10px 20px;
-  border-radius: 8px;
-  transition: background 0.3s;
+  font-weight: 700;
+  font-size: 1.25rem;
 }
 
-.main-menu li a:hover {
-  background-color: #b88aca88;
+.custom-canvas .btn-close {
+  filter: brightness(0) invert(1);
 }
+
+.custom-canvas .nav-link {
+  color: #e7e1eb;
+  font-weight: 600;
+  padding: 10px 0;
+  transition: color 0.3s;
+}
+
+.custom-canvas .nav-link:hover,
+.custom-canvas .nav-link:focus {
+  color: #e1dde4;
+  text-decoration: underline;
+}
+
+
+/* =============================== */
+/*         ВІДЕО СЕКЦІЯ            */
+/* =============================== */
 
 .video-wrapper {
   display: flex;
@@ -56,14 +131,29 @@ h1, h2, h3 {
 
 .video-block iframe {
   width: 100%;
-  height: auto;
   aspect-ratio: 16 / 9;
+  border-radius: 8px;
+  border: none;
+  display: block;
+  position: relative;
+  z-index: 1;
 }
+
+
+/* =============================== */
+/*           АУДІО СЕКЦІЯ          */
+/* =============================== */
 
 audio {
   width: 100%;
   margin-top: 10px;
+  outline: none;
 }
+
+
+/* =============================== */
+/*            КАРТИ                */
+/* =============================== */
 
 #map, #pano {
   width: 100%;
@@ -71,6 +161,17 @@ audio {
   margin-bottom: 30px;
   border: 2px solid #ccc;
   border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+
+/* =============================== */
+/*    ПОГОДА / СОЦІАЛЬНІ КНОПКИ  */
+/* =============================== */
+
+.weather-block {
+  text-align: center;
+  margin-bottom: 30px;
 }
 
 .social-weather-wrapper {
@@ -90,6 +191,14 @@ audio {
   gap: 15px;
   max-width: 300px;
   flex: 1 1 250px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  color: #333;
+}
+
+.social-button:hover {
+  background-color: #d9c9e8;
+  color: #241f25;
 }
 
 .social-button img {
@@ -100,6 +209,7 @@ audio {
 .social-text h3 {
   margin-bottom: 5px;
   font-size: 16px;
+  font-weight: 600;
 }
 
 .social-text p {
@@ -107,20 +217,14 @@ audio {
   color: #555;
 }
 
+
+/* =============================== */
+/*         АДАПТИВНІСТЬ            */
+/* =============================== */
+
 @media (max-width: 768px) {
   body {
-    padding: 15px;
-  }
-
-  .main-menu {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .main-menu li a {
-    width: 100%;
-    text-align: center;
-    font-size: 18px;
+    padding: 10px;
   }
 
   .video-wrapper {
@@ -129,64 +233,6 @@ audio {
 
   .social-weather-wrapper {
     flex-direction: column;
-    align-items: stretch;
-  }
-
-  .social-button {
-    width: 100%;
-  }
-}
-
-.fixed-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: #b88aca;
-  z-index: 1000;
-  padding: 10px 0;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
-
-.fixed-header .main-menu {
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 15px;
-}
-
-.fixed-header .main-menu li {
-  list-style: none;
-}
-
-.fixed-header .main-menu li a {
-  color: #fff;
-  text-decoration: none;
-  padding: 10px 20px;
-  border-radius: 6px;
-  transition: background 0.3s;
-  background-color: #b88aca;
-}
-
-.fixed-header .main-menu li a:hover {
-  background-color: #b88aca;
-}
-
-.content {
-  margin-top: 80px;
-}
-
-@media (max-width: 768px) {
-  .fixed-header .main-menu {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .fixed-header .main-menu li a {
-    width: 90%;
-    text-align: center;
-    font-size: 18px;
+    gap: 10px;
   }
 }
