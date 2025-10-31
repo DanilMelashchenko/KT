@@ -53,7 +53,6 @@ user1.set_password("my_super_secret_123")
 print(f"Checking password 'wrong_pass': {user1.check_password('wrong_pass')}")
 print(f"Checking password 'my_super_secret_123': {user1.check_password('my_super_secret_123')}")
 
-
 print("\n--- Task 2: Abstraction ---")
 
 class Shape(ABC):
