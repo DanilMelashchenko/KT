@@ -1,0 +1,186 @@
+from abc import ABC, abstractmethod
+import math
+
+# --- Task 1: Single Responsibility Principle (SRP) ---
+print("--- 1. Single Responsibility Principle (SRP) ---")
+
+class User:
+    def __init__(self, name, email):
+        self.name = name
+        self.email = email
+
+class UserService:
+    def __init__(self):
+        self.users_db = {}
+        self.next_id = 1
+
+    def create_user(self, name, email):
+        user = User(name, email)
+        user_id = self.next_id
+        self.users_db[user_id] = user
+        self.next_id += 1
+        print(f"Service: Created user '{name}' with ID {user_id}")
+        return user_id
+
+    def update_user_email(self, user_id, new_email):
+        if user_id in self.users_db:
+            self.users_db[user_id].email = new_email
+            print(f"Service: Updated email for user {user_id} to '{new_email}'")
+        else:
+            print(f"Service: User ID {user_id} not found.")
+
+    def delete_user(self, user_id):
+        if user_id in self.users_db:
+            del self.users_db[user_id]
+            print(f"Service: Deleted user {user_id}")
+        else:
+            print(f"Service: User ID {user_id} not found.")
+
+user_service = UserService()
+user_id_1 = user_service.create_user("Danylo", "danylo@example.com")
+user_id_2 = user_service.create_user("Alice", "alice@example.com")
+user_service.update_user_email(user_id_1, "danylo.new@example.com")
+user_service.delete_user(user_id_2)
+
+
+# --- Task 2: Open/Closed Principle (OCP) ---
+print("\n--- 2. Open/Closed Principle (OCP) ---")
+
+class Shape(ABC):
+    @abstractmethod
+    def calculate_area(self):
+        pass
+
+class Rectangle(Shape):
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+    
+    def calculate_area(self):
+        return self.width * self.height
+
+class Circle(Shape):
+    def __init__(self, radius):
+        self.radius = radius
+        
+    def calculate_area(self):
+        return math.pi * (self.radius ** 2)
+
+class AreaCalculator:
+    def calculate_total_area(self, shapes):
+        total_area = 0
+        for shape in shapes:
+            total_area += shape.calculate_area()
+        return total_area
+
+shapes_list = [Rectangle(10, 5), Circle(7)]
+calculator = AreaCalculator()
+total = calculator.calculate_total_area(shapes_list)
+print(f"Total area of shapes: {total:.2f}")
+
+class Triangle(Shape):
+    def __init__(self, base, height):
+        self.base = base
+        self.height = height
+    def calculate_area(self):
+        return 0.5 * self.base * self.height
+
+shapes_list_v2 = [Rectangle(10, 5), Circle(7), Triangle(4, 3)]
+total_v2 = calculator.calculate_total_area(shapes_list_v2)
+print(f"Total area (with Triangle): {total_v2:.2f}")
+
+
+# --- Task 3: Liskov Substitution Principle (LSP) ---
+print("\n--- 3. Liskov Substitution Principle (LSP) ---")
+
+class Square(Shape):
+    def __init__(self, side):
+        self.side = side
+        
+    def calculate_area(self):
+        return self.side ** 2
+
+def print_figure_areas(figures):
+    print("Calculating areas for figures:")
+    for figure in figures:
+        area = figure.calculate_area()
+        print(f" - A {figure.__class__.__name__} has an area of: {area:.2f}")
+
+all_shapes = [Rectangle(7, 3), Circle(5), Square(4)]
+
+print_figure_areas(all_shapes)
+
+
+# --- Task 4: Interface Segregation Principle (ISP) ---
+print("\n--- 4. Interface Segregation Principle (ISP) ---")
+
+class IPrinter(ABC):
+    @abstractmethod
+    def print_doc(self, doc): pass
+
+class IScanner(ABC):
+    @abstractmethod
+    def scan_doc(self, doc): pass
+
+class ICoppier(ABC):
+    @abstractmethod
+    def copy_doc(self, doc): pass
+
+class SimplePrinter(IPrinter):
+    def print_doc(self, doc):
+        print(f"SimplePrinter: Printing {doc}")
+
+class SimpleScanner(IScanner):
+    def scan_doc(self, doc):
+        print(f"SimpleScanner: Scanning {doc}")
+
+class MultifunctionPrinter(IPrinter, IScanner, ICoppier):
+    def print_doc(self, doc):
+        print(f"MFP: Printing {doc}")
+    def scan_doc(self, doc):
+        print(f"MFP: Scanning {doc}")
+    def copy_doc(self, doc):
+        print(f"MFP: Copying {doc} (by scanning and printing)")
+
+printer = SimplePrinter()
+scanner = SimpleScanner()
+mfp = MultifunctionPrinter()
+
+printer.print_doc("MyEssay.pdf")
+scanner.scan_doc("MyPhoto.jpg")
+mfp.print_doc("WorkReport.pdf")
+mfp.copy_doc("WorkReport.pdf")
+
+
+# --- Task 5: Dependency Inversion Principle (DIP) ---
+print("\n--- 5. Dependency Inversion Principle (DIP) ---")
+
+class INotificationSender(ABC):
+    @abstractmethod
+    def send_notification(self, message):
+        pass
+
+class EmailSender(INotificationSender):
+    def send_notification(self, message):
+        print(f"EmailSender: Sending email with message: '{message}'")
+
+class SMSSender(INotificationSender):
+    def send_notification(self, message):
+        print(f"SMSSender: Sending SMS with message: '{message}'")
+
+class NotificationService:
+    def __init__(self, sender: INotificationSender):
+        self.sender = sender
+
+    def send_alert(self, alert_message):
+        print("NotificationService: Processing alert...")
+        self.sender.send_notification(alert_message)
+
+email_sender = EmailSender()
+sms_sender = SMSSender()
+
+email_service = NotificationService(email_sender)
+sms_service = NotificationService(sms_sender)
+
+email_service.send_alert("The server is down!")
+sms_service.send_alert("Your 2FA code is 12345.")
