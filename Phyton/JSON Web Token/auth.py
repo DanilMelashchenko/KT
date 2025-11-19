@@ -26,18 +26,18 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 # Пароль для обох користувачів: "secret"
 # Хеш згенеровано через pwd_context.hash("secret")
 fake_users_db = {
-    "danyl": {
-        "username": "danyl",
+    "Danylo": {
+        "username": "Danylo",
         "full_name": "Данил Студент",
         "email": "danyl@example.com",
-        "hashed_password": "$2b$12$aF5t2ZzooS21tA/wta0MzO4f0oomip1TN6VOKfdoYCklh8uOxvjMy",
+        "hashed_password": "$2b$12$EPxEhzbspZvLigGDy9IYzOjOTw8eMzXFBjsLrPmB/QonTpg22ZKHG",
         "disabled": False,
     },
-    "alice": {
-        "username": "alice",
-        "full_name": "Alice Wonderland",
+    "Alina": {
+        "username": "Alina",
+        "full_name": "Alina Wonderland",
         "email": "alice@example.com",
-        "hashed_password": "$2b$12$EixZaYVK1fsbw1ZfbX3OXePaWxn96p36WQoeG6Lruj3vjPGga311W",
+        "hashed_password": "$2b$12$tHlsiaH3DGAittIDdFMcduJdbIyN36NotlOyNEK/hVufgylZJxa0m",
         "disabled": False,
     },
 }
